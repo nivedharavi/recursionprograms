@@ -1,0 +1,60 @@
+int minIt(int x[], int n) {
+    int currmin  = x[0];
+    for (int i =1 ; i<n;i++){
+    if (x[i] < currmin){
+        currmin  = x[i];
+    }
+    }
+    return currmin;
+}
+
+int minRec1(int x[], int n) {
+    if (n==1){
+        return(x[0]);
+    }
+    int currmin = x[n-1];
+    int check = minRec1(x, n-1);
+    if (currmin<check){
+      return  currmin;
+    }
+    else{
+        return check;
+    }
+ }
+int minRec2(int x[], int n) {
+	if (n==1){
+        return x[0];
+    }
+    int min1 = minRec2(x,n/2);
+    int min2 = minRec2(x+(n/2),n-n/2 );
+    if (min1<min2){
+        return min1;
+    }
+    else{
+        return min2;
+    }
+
+}
+
+double sqrtRec(double x, double low_guess, double high_guess) {
+    double sqr = (low_guess+high_guess)/2;
+    double  y = 10e-15;
+    if(fabs((sqr*sqr)-x)<y){
+        return sqr;
+    }
+    if(sqr*sqr<x){
+        return(sqrtRec(x,sqr,high_guess));
+    }
+    else{
+        return (sqrtRec(x,low_guess,sqr));
+    }
+}
+int strCompare(char* str1, char* str2) {
+       if(str1[0]==0&&str2[0]==0)
+           return 0;
+    else if (str1[0]>str2[0]) return 1;
+    else if (str1[0]<str2[0]) return -1;
+    else if (str1[0]==str2[0]){
+           return strCompare(str1+1, str2+1);
+       }
+}
