@@ -1,0 +1,89 @@
+int arr[5]= {5,4,3,2,1};
+
+
+int pow(int x, int y){
+    if (y==0){
+        return 1;
+    }
+    else {
+        return x*pow(x, y-1);
+    }
+}
+
+void printBinary(int val){
+    if (val<2){
+        std::cout<<val;
+    }
+    else {
+        printBinary(val/2);
+        printBinary(val%2);
+    }
+}
+
+int atoiRecursive(const char* str, int len, int val) {
+    if (len==0) return val;
+     val = (val*10)+(str[0]-'0');
+    atoiRecursive(str+1, len-1,val);
+}
+
+int atoi2(const char* str, int len){
+    int val = 0;
+    atoiRecursive(str, len, val);
+}
+
+int compare(const char* str1, const char* str2) {
+    if (str1[0]==0 &&str2[0]==0){
+        return 0;
+    }
+    else if (str1[0]>str2[0]) return 1;
+    else if (str1[0]<str2[0]) return -1;
+    else compare(str1+1, str2+1);
+}
+
+int countBits(int n) {
+    if (n == 0) return 0;
+    else {
+        if (n%2==1){
+            return 1+countBits(n/2);
+        }
+        else{
+            return countBits(n/2);
+        }
+    }
+}
+
+void compare(int curr, int* arr, int n){
+
+}
+
+void insert(int* arr, int n){
+   if (n == 1){
+       return;
+   }
+    compare(
+
+}
+
+
+int main(){
+    int r = pow(2,7);
+   // printf("%d",r);
+   // printBinary(12);
+    //0  1 1  2  1 2  2
+    int res1 = atoi2("1234",4);
+    int res2 = atoi2("4321",4);
+    printf("%d\n",res1);//should be 1234
+    printf("%d\n",res2);//should be 4321
+    char* str1 = strdup("software");
+    char* str2 = strdup("softwore");
+    char* str3 = strdup("software");
+    printf("compare software and softwore: %d\n",compare(str1,str2));//should be -1;
+    printf("compare softwore and software: %d\n",compare(str2,str1));//should be 1;
+    printf("compare software and software: %d\n",compare(str1,str3));//should be 0;
+        for(int i = 0; i < 10; i++) {
+            int res = countBits(i);
+            printf("%d\t",res);
+        }
+    insert(arr,5);
+    return 0;
+}
